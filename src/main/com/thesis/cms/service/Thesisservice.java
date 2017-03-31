@@ -37,5 +37,12 @@ public interface Thesisservice {
 
 	void fromXls2(List<Thesis> ts);
 
-	
+
+    int deleteByPrimaryKey(int i);
+
+    int updateCheckByid(Thesis thesis);
+
+	Thesis selectByPrimaryKey(int i);
+
+	Pagination getPaget(int cpn, int pageSize, int tid);
 }

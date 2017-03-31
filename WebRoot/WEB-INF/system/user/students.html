@@ -131,14 +131,6 @@
 	</div>
 	<div style="margin-bottom: auto"><#include
 		"../include/pagination.html" /></div>
-	<script type="text/javascript">
-		function del(stuid) {
-			if (!confirm('您确定要退选此吗?')) {
-				return;
-			} else {
-				location.href = "${base!}/students/nothesis.do?stuid=" + stuid;
-			}
-		}
-	</script>
+
 </body>
 </html>

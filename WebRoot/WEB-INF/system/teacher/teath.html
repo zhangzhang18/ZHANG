@@ -1,73 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MyHtml.html</title>
+	<title>MyHtml.html</title>
 
-<meta name="keywords" content="keyword1,keyword2,keyword3">
-<meta name="description" content="this is my page">
-<meta name="content-type" content="text/html; charset=UTF-8">
-<link href="${base}/resource/hsr/acedown/assets/css/bootstrap.min.css"
-	rel="stylesheet" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/font-awesome.min.css" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/ace.min.css" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/ace-rtl.min.css" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/ace-skins.min.css" />
-
+	<meta name="keywords" content="keyword1,keyword2,keyword3">
+	<meta name="description" content="this is my page">
+	<meta name="content-type" content="text/html; charset=UTF-8">
+	<script src="${base}/resource/hsr/assets/js/jquery-1.8.2.min.js"></script>
+	<script src="${base}/resource/js/thesis.js"></script>
+	<link href="${base}/resource/hsr/acedown/assets/css/bootstrap.min.css"
+		  rel="stylesheet" />
+	<link rel="stylesheet"
+		  href="${base}/resource/hsr/acedown/assets/css/font-awesome.min.css" />
+	<link rel="stylesheet"
+		  href="${base}/resource/hsr/acedown/assets/css/ace.min.css" />
+	<link rel="stylesheet"
+		  href="${base}/resource/hsr/acedown/assets/css/ace-rtl.min.css" />
+	<link rel="stylesheet"
+		  href="${base}/resource/hsr/acedown/assets/css/ace-skins.min.css" />
 </head>
 
-<body style='width:90%;'>
-	<div class="page-content">
-		<div class="col-xs-12">
-			<div class="table-responsive">
-				<table id="sample-table-2"
-					class="table table-striped table-bordered table-hover">
+<body style='width:99%;'>
+<div class="page-content">
 
-					<thead>
-						<tr>
-							<td class="center">论文id:</td>
-							<td>论文题目:</td>
-							<td>论文性质:</td>
-							<td>论文类型:</td>
-							<td>提交时间:</td>
-							<td>研究内容:</td>
-							<td>备注:</td>
-							<td>是否已选:</td>
-							<td>已选学生id:</td>
-							<td>审核情况</td>
-						</tr>
-					</thead>
-					<#list thesis as list>
-					<tbody>
-						<tr name="pagination">
-							<td class="center">${list.cid!}</td>
-							<td>${list.ctitle!}</td>
-							<td>${list.cproperty!}</td>
-							<td>${list.ctype!}</td>
-							<td>${list.submitDate?string("yyyy-MM-dd HH:mm:ss")}</td>
-							<td>${list.content!}</td>
-							<td>${list.message!}</td>
-							<td>${list.cflag!}</td>
-							<td><#if list.stuid??>${list.stuid!} <#else><a
-								href="${base!}/teacher/${list.cid}/v_list.do">指定学生</a></#if>
-							</td>
-							<td><#if list.research==1>已审核
-							<#else>待审核
+	<div class="col-xs-12">
+		<div class="table-responsive">
+			<table id="sample-table-2"
+				   class="table table-striped table-bordered table-hover">
+				<thead>
+				<tr>
+					<td class="center">论文id:</td>
+					<td>论文题目:</td>
+					<td>论文性质:</td>
+					<td>论文类型:</td>
+					<td>提交时间:</td>
+					<td>研究内容:</td>
+					<td>备注:</td>
+					<td>是否已选:</td>
+					<td>已选学生id:</td>
+					<td>审核情况</td>
+				</tr>
+				</thead>
+				<tbody>
+				<#if pagination?exists> <#assign list = pagination.list > <#if
+						list?exists> <#if (list?size >0)> <#list list as l >
+					<tr name="pagination">
+
+					<tr name="pagination">
+						<td class="center">${l.cid!}</td>
+						<td>${l.ctitle!}</td>
+						<td>${l.cproperty!}</td>
+						<td>${l.ctype!}</td>
+						<td>${l.submitDate?string("yyyy-MM-dd HH:mm:ss")}</td>
+						<td>${l.content!}</td>
+						<td>${l.message!}</td>
+						<td>
+					     	<#if l.cflag==0>未选</#if>
+							<#if l.cflag==1>已选</#if>
+						</td>
+						<td><#if l.stuid??>${l.stuid!}
+							<#else><a  href="${base!}/teacher/${l.cid}/v_list.do">指定学生</a>
+						   </#if>
+						</td>
+						<td>
+							<#if l.research==0>待审核
 							</#if>
-							</td>
-						</tr>
-						</#list>
-						<tr>
-						</tr>
+							<#if l.research==1>已审核
+						</#if>
+						</td>
+					</tr>
+				<tr>
+				</tr>
+				</#list> </#if> </#if></#if>
+				</tbody>
 
-					</tbody>
+			</table>
 
-				</table>
-			</div>
 		</div>
 	</div>
+</div>
+<div style="margin-bottom: auto"><#include
+		"../include/pagination.html" /></div>
 </body>
 </html>

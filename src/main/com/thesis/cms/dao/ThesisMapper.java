@@ -76,4 +76,10 @@ public interface ThesisMapper {
 	int getCounta(@Param("ctitle") String ctitle);
 
 	void fromXls2(List<Thesis> ts);
+
+    int updateCheckByid(Thesis thesis);
+
+    List<Thesis> getPaget(@Param("begin") int begin, @Param("end") int end, @Param("tid") int tid);
+
+	int getCountt(@Param("tid") int tid);
 }

@@ -41,48 +41,48 @@
 					<div class="space-4"></div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right"
-							for="form-field-1">姓名*</label>
+							>姓名*</label>
 						<div class="col-sm-9">
 							<input type="text" id="stuname" name="stuname" readonly
 								value="${student.stuname!}" class="col-xs-10 col-sm-5"/>
-							<span id="namePrompt"></span>
+							<span ></span>
 						</div>
 					</div>
 					<div class="space-4"></div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right"
-							for="form-field-1">学号*</label>
+							>学号*</label>
 						<div class="col-sm-9">
 							<input type="text" id="stuid" name="stuid"
 								value="${student.stuid!}" class="col-xs-10 col-sm-5" readonly />
-							<span id="namePrompt"></span>
+							<span ></span>
 						</div>
 					</div>
 					<div class="space-4"></div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right"
-							for="form-field-1">密码*</label>
+							>密码*</label>
 						<div class="col-sm-9">
 							<input type="password" id="stupwd" name="stupwd"
-								class="col-xs-10 col-sm-5" /> <span id="namePrompt"></span>
+								class="col-xs-10 col-sm-5" /> <span ></span>
 						</div>
 					</div>
 					<div class="space-4"></div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right"
-							for="form-field-1">确认密码*</label>
+							>确认密码*</label>
 						<div class="col-sm-9">
 							<input type="password" id="Pwd" name="pwd"
-								class="col-xs-10 col-sm-5" /> <span id="namePrompt"></span>
+								class="col-xs-10 col-sm-5" /> <span ></span>
 						</div>
 					</div>
 					<div class="space-4"></div>
 					<div>
 						<div class="col-md-offset-3 col-md-9">
-							<button class="btn btn-info" id="forSubmit" type="button"
+							<a class="btn btn-info" id="forSubmit"
 								onclick="update()">
 								<i class="icon-ok bigger-110"></i> 提交
-							</button>
+							</a>
 							&nbsp; &nbsp; &nbsp;
 							<button class="btn" type="reset">
 								<i class="icon-undo bigger-110"></i> 重置
@@ -95,6 +95,7 @@
 					function update() {
 						if ($("input[name=stuname]").val() == "") {
 							alert("用户名不能为空!");
+                            $("#update").submit;
 							return false;
 						}
 					

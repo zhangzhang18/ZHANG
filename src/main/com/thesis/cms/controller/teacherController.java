@@ -55,7 +55,7 @@ public class teacherController {
 		thesis.setCflag(0);
 		thesis.setSubmitDate(date);
 		thesisservice.insert(thesis);
-		return "redirect:teath.do";
+		return "redirect:allth.do";
 	}
 
 	@RequestMapping("/intitle.do")
@@ -84,14 +84,15 @@ public class teacherController {
 		return "teacher/Mythesis";
 	}
 
-	@RequestMapping("/teath.do")
+	@RequestMapping("/v_list.do")
 	public String detail2(Integer id, HttpServletRequest request,
-			HttpServletResponse response, ModelMap model) {
+			HttpServletResponse response, ModelMap model,Integer pageNo) {
 		RcAdmin admin = UserUtil.getUser(request);
 		String username = admin.getName();
 		Teachers teacher = teacherService.getTeacherByName(username);
-		List<Thesis> thesis = thesisservice.getthesisByTtid(teacher.getTid());
-		model.addAttribute("thesis", thesis);
+		Pagination pagination = this.thesisservice.getPaget(
+				SimplePage.cpn(pageNo), Constants.PAGE_SIZE, teacher.getTid());
+		model.addAttribute("pagination", pagination);
 		return "teacher/teath";
 	}
 
@@ -117,7 +118,7 @@ public class teacherController {
 		Time time=timeService.selectTime();
 		if (teacher.getSsum() == time.getStunumber()) {
 			System.out.println("以达到教师可选最大人数");
-			return "redirect:teath.do";
+			return "redirect:allth.do";
 
 		} else {
 			Thesis thesis = thesisservice.getThesisByCid(cid);
@@ -131,7 +132,7 @@ public class teacherController {
 
 			teacherService.updateSum(teacher);
 			studentsService.updateTid(student);
-			return "redirect:teath.do";
+			return "redirect:allth.do";
 		}
 	}
 

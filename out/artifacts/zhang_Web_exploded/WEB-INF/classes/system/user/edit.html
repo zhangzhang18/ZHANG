@@ -33,61 +33,61 @@
 						<input type="hidden" name="passWordOri" value="${fcUser.wechatUserPass}">
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名*</label>
+								<label class="col-sm-3 control-label no-padding-right">用户名*</label>
 								<div class="col-sm-9">
 									<input type="text" id="name" name="wechatUserName"  value="${fcUser.wechatUserName}" class="col-xs-10 col-sm-5" />			
-								<span id="namePrompt"></span>
+								<span ></span>
 								</div>
 							</div>
 							
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">登录密码*</label>
+								<label class="col-sm-3 control-label no-padding-right">登录密码*</label>
 								<div class="col-sm-9">
-									<input type="password" id="nameIs" name="wechatUserPass" value="" class="col-xs-10 col-sm-5" />
-								<span id="namePrompt"></span>
+									<input type="password"  name="wechatUserPass" value="" class="col-xs-10 col-sm-5" />
+								<span ></span>
 								</div>
 							</div>
 							
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">联系人姓名*</label>
+								<label class="col-sm-3 control-label no-padding-right">联系人姓名*</label>
 								<div class="col-sm-9">
-									<input type="text" id="nameIs" name="wechatLinkmanName" value="${fcUser.wechatLinkmanName}" class="col-xs-10 col-sm-5" />
-								<span id="namePrompt"></span>
+									<input type="text"  name="wechatLinkmanName" value="${fcUser.wechatLinkmanName}" class="col-xs-10 col-sm-5" />
+								<span ></span>
 								</div>
 							</div>
 							
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">联系人电话*</label>
+								<label class="col-sm-3 control-label no-padding-right">联系人电话*</label>
 								<div class="col-sm-9">
-									<input type="text" id="nameIs" name="wechatPhone" value="${fcUser.wechatPhone}" class="col-xs-10 col-sm-5" />
-								<span id="namePrompt"></span>
+									<input type="text"  name="wechatPhone" value="${fcUser.wechatPhone}" class="col-xs-10 col-sm-5" />
+								<span ></span>
 								</div>
 							</div>
 							<div id="studentName"  >
 							<div class="space-4"></div>
 							<div class="form-group"  >
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">学生姓名*</label>
+								<label class="col-sm-3 control-label no-padding-right">学生姓名*</label>
 								<div class="col-sm-9">
-									<input type="text" id="nameIs" name="wechatStudentName" value="${fcUser.wechatStudentName!}" class="col-xs-10 col-sm-5" />
-								<span id="namePrompt"></span>
+									<input type="text"  name="wechatStudentName" value="${fcUser.wechatStudentName!}" class="col-xs-10 col-sm-5" />
+								<span ></span>
 								</div>
 							</div>
 							
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">学号*</label>
+								<label class="col-sm-3 control-label no-padding-right">学号*</label>
 								<div class="col-sm-9">
-									<input type="text" id="nameIs" name="wechatStudentNum"  value="${fcUser.wechatStudentNum}" class="col-xs-10 col-sm-5" />
-								<span id="namePrompt"></span>
+									<input type="text"  name="wechatStudentNum"  value="${fcUser.wechatStudentNum}" class="col-xs-10 col-sm-5" />
+								<span ></span>
 								</div>
 							</div>
 						</div>
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">类型*</label>
+								<label class="col-sm-3 control-label no-padding-right">类型*</label>
 								<div class="col-sm-9">
 								<select type="text"  name="wechatUserType" class="col-xs-10 col-sm-5" onchange="changel(this.value)">
            							<option value="0" <#if  fcUser.wechatUserType==0  >selected="selected"</#if>>学生</option>
@@ -98,7 +98,7 @@
 							
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">区</label>
+								<label class="col-sm-3 control-label no-padding-right">区</label>
 								<div class="col-sm-9">
 								<select type="text"  id="area" name="wechatDistrictId" class="col-xs-10 col-sm-5" onchange="getSchool()">
            							<option value="-1" >请选择行政区域</option>
@@ -115,7 +115,7 @@
 							
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">学校</label>
+								<label class="col-sm-3 control-label no-padding-right">学校</label>
 								<div class="col-sm-9">
 								<select type="text"  id="school_id" name="wechatSchoolId" class="col-xs-10 col-sm-5" onchange="getGarden()">
            							<option value="-1">请选择学校</option>
@@ -131,7 +131,7 @@
 							</div>
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">年级</label>
+								<label class="col-sm-3 control-label no-padding-right">年级</label>
 								<div class="col-sm-9">
 								<select type="text"  id="grade_id" name="wechatGardenId" class="col-xs-10 col-sm-5" onchange="getClass()">
            							<option value="-1">请选择年级</option>
@@ -148,7 +148,7 @@
 							
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1">班级</label>
+								<label class="col-sm-3 control-label no-padding-right">班级</label>
 								<div class="col-sm-9">
 								<select type="text"  id="classes_id" name="wechatClassId" class="col-xs-10 col-sm-5" >
            							<option value="-1">请选择班级</option>

@@ -24,65 +24,90 @@ import com.thesis.cms.util.Constants;
 @RequestMapping("/thesis")
 public class thesisController {
 
-	@Autowired
-	private TeacherService teacherService;
+    @Autowired
+    private TeacherService teacherService;
 
-	@Autowired
-	private Thesisservice thesisservice;
+    @Autowired
+    private Thesisservice thesisservice;
 
-	@Autowired
-	private StudentsService studentsService;
+    @Autowired
+    private StudentsService studentsService;
 
-	@RequestMapping("/v_list.do")
-	public String all(Integer pageNo, String ctitle,
-			HttpServletRequest request, HttpServletResponse response,
-			ModelMap model) {
-		Pagination pagination = this.thesisservice.getPagea(
-				SimplePage.cpn(pageNo), Constants.PAGE_SIZE, ctitle);
-		model.addAttribute("pagination", pagination);
-		return "user/thesis";
-	}
-	@RequestMapping(value = "/sel.do", method = RequestMethod.POST)
-	public ModelAndView sel(Integer id, HttpServletRequest request,
-			HttpServletResponse response, ModelMap model, String ctitle) {
+    @RequestMapping("/v_list.do")
+    public String all(Integer pageNo, String ctitle,
+                      HttpServletRequest request, HttpServletResponse response,
+                      ModelMap model) {
+        Pagination pagination = this.thesisservice.getPagea(
+                SimplePage.cpn(pageNo), Constants.PAGE_SIZE, ctitle);
+        model.addAttribute("pagination", pagination);
+        return "user/thesis";
+    }
 
-		List<Thesis> thesis = thesisservice.selectByTitle(ctitle);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("user/thesis");
-		mav.addObject("thesis", thesis);
-		return mav;
+    @RequestMapping(value = "/sel.do", method = RequestMethod.POST)
+    public ModelAndView sel(Integer id, HttpServletRequest request,
+                            HttpServletResponse response, ModelMap model, String ctitle) {
 
-	}
-	
-	@RequestMapping("/add.do")
-	public String add(HttpServletRequest request, HttpServletResponse response,
-			ModelMap model) {
-		return "user/addthesis";
-	}
+        List<Thesis> thesis = thesisservice.selectByTitle(ctitle);
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("user/thesis");
+        mav.addObject("thesis", thesis);
+        return mav;
 
-	@RequestMapping(value = "/addthesis.do", method = RequestMethod.POST)
-	public String addl(Integer id, HttpServletRequest request,
-			HttpServletResponse response, ModelMap model,Thesis thesis) {
+    }
 
-		thesisservice.insert(thesis);
-		return "redirect:v_list.do";
+    @RequestMapping("/add.do")
+    public String add(HttpServletRequest request, HttpServletResponse response,
+                      ModelMap model) {
+        return "user/addthesis";
+    }
 
-	}
-	@RequestMapping("/update.do")
-	public String up(HttpServletRequest request, HttpServletResponse response,
-			ModelMap model,Thesis thesis) {
-		model.addAttribute("thesis", thesis);
-		return "user/thesisupdate";
-	}
-	
-	
-	@RequestMapping(value = "/thesupdate.do", method = RequestMethod.POST)
-	public String upl(Integer id, HttpServletRequest request,
-			HttpServletResponse response, ModelMap model,Thesis thesis) {
+    @RequestMapping(value = "/addthesis.do", method = RequestMethod.POST)
+    public String addl(Integer id, HttpServletRequest request,
+                       HttpServletResponse response, ModelMap model, Thesis thesis) {
+        thesis.setResearch(0);
+        thesisservice.insert(thesis);
+        return "redirect:v_list.do";
 
-		thesisservice.updateByPrimaryKey(thesis);
-		return "redirect:v_list.do";
+    }
 
-	}
+    @RequestMapping("/update.do")
+    public String up(HttpServletRequest request, HttpServletResponse response,
+                     ModelMap model, Thesis thesis) {
+        model.addAttribute("thesis", thesis);
+        return "user/thesisupdata";
+    }
+
+    @RequestMapping("/delthesis.do")
+    public String delthesis(HttpServletRequest request, HttpServletResponse response,
+                            ModelMap model) {
+        String id = request.getParameter("id");
+        thesisservice.deleteByPrimaryKey(Integer.parseInt(id));
+        return "redirect:v_list.do";
+    }
+
+    @RequestMapping("/check.do")
+    public String check(HttpServletRequest request, HttpServletResponse response,
+                        ModelMap model) {
+        String id = request.getParameter("id");
+        Thesis thesis = thesisservice.selectByPrimaryKey(Integer.parseInt(id));
+        if (thesis.getResearch() == 1) {
+            thesis.setResearch(0);
+            thesisservice.updateCheckByid(thesis);
+        }else {
+            thesis.setResearch(1);
+            thesisservice.updateCheckByid(thesis);
+        }
+
+        return "redirect:v_list.do";
+    }
+
+    @RequestMapping(value = "/thesupdate.do", method = RequestMethod.POST)
+    public String upl(Integer id, HttpServletRequest request,
+                      HttpServletResponse response, ModelMap model, Thesis thesis) {
+
+        thesisservice.updateByPrimaryKey(thesis);
+        return "redirect:v_list.do";
+
+    }
 
 }

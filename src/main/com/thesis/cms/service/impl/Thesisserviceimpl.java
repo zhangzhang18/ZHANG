@@ -97,6 +97,20 @@ public class Thesisserviceimpl implements Thesisservice {
 		pagination = new Pagination(pageNo, pageSize, total, users);
 		return pagination;
 	}
+	@Override
+	public Pagination getPaget(int pageNo, int pageSize, int tid) {
+		int total = 0;
+		Pagination pagination = null;
+		List<Thesis> thesis = null;
+		Thesisserviceimpl.log.debug("receive:pageNo=" + pageNo + " pageSize="
+				+ pageSize);
+		int begin = (pageNo - 1) * pageSize;
+		int end = begin + pageSize;
+		thesis = this.thesisMapper.getPaget(begin, end, tid);
+		total = this.thesisMapper.getCountt(tid);
+		pagination = new Pagination(pageNo, pageSize, total, thesis);
+		return pagination;
+	}
 
 	@Override
 	public int insert(Thesis thesis) {
@@ -116,6 +130,21 @@ public class Thesisserviceimpl implements Thesisservice {
 	@Override
 	public void fromXls2(List<Thesis> ts) {
 		thesisMapper.fromXls2(ts) ;			
+	}
+
+	@Override
+	public int deleteByPrimaryKey(int id) {
+		return thesisMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public int updateCheckByid(Thesis thesis) {
+		return thesisMapper.updateCheckByid(thesis);
+	}
+
+	@Override
+	public Thesis selectByPrimaryKey(int id) {
+		return thesisMapper.selectByPrimaryKey(id);
 	}
 
 }

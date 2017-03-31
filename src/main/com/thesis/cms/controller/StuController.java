@@ -127,7 +127,7 @@ public class StuController {
 			thesis.setCtitle("未选");
 			teacher.setTeaName("未选");
 		}
-		model.addAttribute("student", student);// fasong
+		model.addAttribute("student", student);
 		model.addAttribute("thesis", thesis);
 		model.addAttribute("teacher", teacher);
 		return "student/stuziliao";

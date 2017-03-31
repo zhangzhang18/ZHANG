@@ -16,9 +16,6 @@
 			classpath:/config/application-context.xml
 			classpath:/config/database-context.xml
 			classpath:/config/thesis-admin-service.xml
-			classpath:/spring-mybatis/configuration-thesis.xml
-			classpath:/spring-mybatis/GeneratorConfigAdmin.xml
-			classpath:/spring-mybatis/mybatis-configuration.xml
 		</param-value>
 	</context-param>
 	<filter>

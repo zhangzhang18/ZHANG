@@ -35,12 +35,12 @@
 						<tr>
 							<td class="center">学生姓名:</td>
 							<td>学号:</td>
-							<td>密码:</td>
 							<td>性别:</td>
 							<td>班级:</td>
 							<td>指导教师:</td>
 							<td>已选论文题目:</td>
 							<td>退选:</td>
+							<td>修改:</td>
 						</tr>
 					</thead>
 
@@ -48,7 +48,6 @@
 						<tr name="pagination">
 							<td class="center">${student.stuname}</td>
 							<td>${student.stuid!}</td>
-							<td>${student.stupwd!}</td>
 							<td>${student.stusex!}</td>
 							<td>${student.stuclass!}</td>
 							<td>${teacher.teaName!}</td>
@@ -56,18 +55,14 @@
 							<td><#if student.tid??><a class="blue"
 								href="javascript:void(0);" onclick="del(${thesis.stuid!})">退选</a></td>
 							</#if>
+							<td>	<a class="" href="${base!}/student/update.do?stuid=${student.stuid!}">
+								修改 </a></td>
 						</tr>
 					</tbody>
 				</table>
 
 			</div>
 		</div>
-	</div>
-
-	<div>
-		<a class="" href="${base!}/student/update.do?stuid=${student.stuid!}">
-			修改 </a>
-	</div>
 	</div>
 
 	<script type="text/javascript">

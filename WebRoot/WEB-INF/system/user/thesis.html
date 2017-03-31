@@ -50,7 +50,7 @@
 							<td>已选学生学号:</td>
 							<td>教师id:</td>
 							<td>选项:</td>
-							<td>是否审核通过:</td>
+							<td>审核:</td>
 						</tr>
 					</thead>
 
@@ -77,7 +77,16 @@
 										onclick="del(${l.cid!})"> 移除 </a>
 								</div>
 							</td>
-							<td>${l.research!}</td>
+							<td>
+								<#if (l.research==0)>
+									<a class="blue" href="javascript:void(0);"
+									   onclick="check(${l.cid!})"> 设置为通过 </a>
+								</#if>
+								<#if (l.research==1)>
+									<a class="blue" href="javascript:void(0);"
+									   onclick="check(${l.cid!})"> 设置为不通过 </a>
+								</#if>
+							</td>
 						</tr>
 						</#list> </#if> </#if> <#else> <#if thesis?exists> <#list thesis
 						as l >
@@ -93,7 +102,7 @@
 									<a class="blue"
 										href="${base!}/thesis/update.do?cid=${l.cid!}&&ctitle=${l.ctitle}">
 										编辑 </a> <a class="blue" href="javascript:void(0);"
-										onclick="del(${l.cid!})"> 移除 </a>
+										onclick="del(${l.cid!})">  </a>
 								</div>
 							</td>
 						</tr>
@@ -106,14 +115,17 @@
 	</div>
 	<div style="margin-bottom: auto"><#include
 		"../include/pagination.html" /></div>
-	<script type="text/javascript">
-		function del(cid) {
-			if (!confirm('您确定要退选此吗?')) {
-				return;
-			} else {
-				location.href = "${base!}/student/nothesis.do?cid=" + cid;
-			}
-		}
-	</script>
 </body>
+<script type="text/javascript">
+    function del(cid) {
+        if (!confirm('您确定要删除吗?')) {
+            return;
+        } else {
+            location.href = "${base!}/thesis/delthesis.do?id=" + cid;
+        }
+    }
+    function check(cid) {
+            location.href = "${base!}/thesis/check.do?id=" + cid;
+    }
+</script>
 </html>
