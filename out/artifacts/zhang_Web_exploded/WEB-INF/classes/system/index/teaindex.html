@@ -6,7 +6,7 @@
 <meta name="keywords" content="管理系统" />
 <meta name="description" content="管理系统" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" href="${base}/resource/images/logo.ico"/>
+	<link rel="shortcut icon" href="${base}/images/logo.ico"/>
 <link href="${base}/resource/hsr/acedown/assets/css/bootstrap.min.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
@@ -134,13 +134,10 @@
 					</a>
 						<ul class="submenu">
 							<@thesis_perm url="/user/v_list.do">
-							<li><a
-								target="mainFrom"> <i class="icon-hdd"></i> <span
+							<li><a href="${base!}/student/file.do"
+								   target="mainFrom"><i class="icon-hdd"></i> <span
 									class="menu-text">上传文档</span>
-							</a></li> </@thesis_perm> <@thesis_perm url="/user/v_list.do">
-							<li><a
-								target="mainFrom"> <i class="icon-hdd"></i> <span
-									class="menu-text"> 论文管理</span> <b class=""></b></a></li> </@thesis_perm>
+							</a></li> </@thesis_perm>
 						</ul></li> </@thesis_perm>
 				</ul>
 				<div class="sidebar-collapse" id="sidebar-collapse">
