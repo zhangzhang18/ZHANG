@@ -28,7 +28,7 @@
 	src="${base!}/resource/mulUpload/ajaxfileupload.js"></script>
 </head>
 
-<body>
+<body style="width: 90%;">
 	<script type="text/javascript">
 		function upload() {
 			$.ajaxFileUpload({
@@ -49,7 +49,14 @@
 
 		}
 	</script>
-	<input id="uploadFile" name="uploadFile" type="file" value="导入数据" class="btn btn-info" />
+	<div class="page-header">
+		<h1>
+			文档 <i class="icon-double-angle-right"></i> <small> 上传文档</small>
+		</h1>
+	</div>
+	<div class="page-content">
+	<input id="uploadFile" name="uploadFile" type="file" value="导入数据"   />
 	<input name="" type="button" value="上传" onclick="upload()"  class="btn btn-info"/>
+	</div>
 </body>
 </html>
