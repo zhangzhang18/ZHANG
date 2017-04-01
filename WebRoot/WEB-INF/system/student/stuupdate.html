@@ -79,10 +79,10 @@
 					<div class="space-4"></div>
 					<div>
 						<div class="col-md-offset-3 col-md-9">
-							<a class="btn btn-info" id="forSubmit"
-								onclick="update()">
+							<button class="btn btn-info" id="forSubmit" type="button"
+									onclick="update()">
 								<i class="icon-ok bigger-110"></i> 提交
-							</a>
+							</button>
 							&nbsp; &nbsp; &nbsp;
 							<button class="btn" type="reset">
 								<i class="icon-undo bigger-110"></i> 重置
@@ -95,26 +95,24 @@
 					function update() {
 						if ($("input[name=stuname]").val() == "") {
 							alert("用户名不能为空!");
-                            $("#update").submit;
 							return false;
 						}
-					
-						if ($("input[name=stupwd]").val() != ""
-								&& $("input[id=Pwd]").val() == "") {
-
-							alert("请填写确认密码!");
+						if ($("input[name=stupwd]").val() == "") {
+							alert("请填写密码!");
 							return false;
 						}
+                        if ($("input[id=Pwd]").val() == "") {
+                            alert("请填写确认密码!");
+                            return false;
+                        }
 						if (!chkpwd()) {
 							return false;
 						}
-						$("#update").submit();
+                        $("#update").submit();
 					}
 					function chkpwd() {
 						if ($("input[name=stupwd]").val() != $(
 								"input[id=Pwd]").val()) {
-							// 		        				alert($("input[name=passWord]").val());
-							// 		           				alert($("input[id=password]").val());
 							alert("密码不同,请重新输入!");
 							return false;
 						} else {

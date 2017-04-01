@@ -23,11 +23,14 @@
 <body style='width:99%;'>
 	<div class="page-content">
 		<div class="" align="left">
-			<form method="post" action="${base!}/student/selth.do">
+			<form method="post" action="${base!}/student/selth.do" id="select">
 
-				<lable>title:</lable>
-				<input type="text" name="ctitle"> <input type="submit"
+				<lable>论文题目:</lable>
+				<input type="text" name="ctitle"> <input class="btn btn-info" onclick="checktitle()"
 					value="select">
+				<lable>教师姓名:</lable>
+				<input type="text" name="teaname"> <input  class="btn btn-info" onclick="checkname()"
+														 value="select">
 			</form>
 		</div>
 
@@ -88,7 +91,7 @@
 							<td>
 								<div id="chose">
 									<#if l.cflag==0><#if u.tid??><#else><a class="thesis"
-										href="javascript:void(0);" onclick="sel(${l.cid!},${l.flag})">
+										href="javascript:void(0);" onclick="sel(${l.cid!},${l.cflag})">
 										选定 </a></#if> </#if> <a class="nothesis${l_index+1}"
 										href="javascript:void(0);" onclick="del(${l.stuid!})">退选</a>
 
@@ -110,7 +113,21 @@
 			if (!confirm('您确定要选此论文吗?')) {
 				return;
 			} else {
-				location.href = "${base!}/student/selthesis.do?cid=" + cid;
+                $.ajax({
+                    type:"POST",
+                    url:"/zhang/student/selthesis.do",
+                    data:{cid:cid},
+                    dataType:"json",
+                    success:function(data){
+                        if(data.mesg){
+                            alert(data.mesg);
+                            location.href ='${base!}/student/v_list.do'
+						}else{
+                            location.href ='${base!}/student/v_list.do'
+						}
+
+                    }
+                });
 			}
 		}
 		function del(stuid) {
@@ -120,6 +137,22 @@
 				location.href = "${base!}/student/nothesis.do?stuid=" + stuid;
 			}
 		}
+		function checktitle() {
+            if ($("input[name=ctitle]").val() == "") {
+                alert("查询不能为空!");
+                return false;
+            }else {
+                $("#select").submit();
+            }
+        }
+        function checkname() {
+            if ($("input[name=teaname]").val() == "") {
+                alert("查询不能为空!");
+                return false;
+            }else {
+                $("#select").submit();
+			}
+        }
 	</script>
 </body>
 </html>

@@ -74,4 +74,9 @@ public class TeacherServiceimpl implements TeacherService {
 		teachersMapper.fromXls2(teachers);		
 	}
 
+	@Override
+	public Teachers selectTeacherByName(String teaname) {
+		return teachersMapper.selectTeacherByName(teaname);
+	}
+
 }

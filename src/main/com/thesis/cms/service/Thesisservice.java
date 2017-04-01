@@ -45,4 +45,6 @@ public interface Thesisservice {
 	Thesis selectByPrimaryKey(int i);
 
 	Pagination getPaget(int cpn, int pageSize, int tid);
+
+    List<Thesis> selectThesisByTid(Integer tid);
 }

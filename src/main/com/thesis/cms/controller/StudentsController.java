@@ -89,7 +89,6 @@ public class StudentsController {
 
 		return "user/students";
 	}
-//list  
 	@RequestMapping(value = "/sel.do", method = RequestMethod.POST)
 	public ModelAndView sel(Integer id, HttpServletRequest request,
 			HttpServletResponse response, ModelMap model, Integer stuid) {

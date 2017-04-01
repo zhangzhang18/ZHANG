@@ -26,4 +26,5 @@ public interface TeacherService {
 	void fromXls2(List<Teachers> teachers);
 
 
+    Teachers selectTeacherByName(String teaname);
 }

@@ -82,4 +82,6 @@ public interface ThesisMapper {
     List<Thesis> getPaget(@Param("begin") int begin, @Param("end") int end, @Param("tid") int tid);
 
 	int getCountt(@Param("tid") int tid);
+
+    List<Thesis> selectThesisByTid(Integer tid);
 }

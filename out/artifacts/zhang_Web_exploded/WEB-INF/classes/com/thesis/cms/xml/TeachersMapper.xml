@@ -304,7 +304,14 @@
 		where TID =
 		#{tid,jdbcType=INTEGER}
 	</update>
-
+	<select id="selectTeacherByName" parameterType="java.lang.String"
+			resultMap="BaseResultMap">
+		select
+		*
+		from teachers
+		where tea_name like CONCAT(CONCAT('%',
+		#{tea_name}),'%')
+	</select>
 
 	<select id="getTeacherByName" parameterType="java.lang.String"
 		resultMap="BaseResultMap">

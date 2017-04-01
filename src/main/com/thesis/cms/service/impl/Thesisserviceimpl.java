@@ -113,6 +113,11 @@ public class Thesisserviceimpl implements Thesisservice {
 	}
 
 	@Override
+	public List<Thesis> selectThesisByTid(Integer tid) {
+		return thesisMapper.selectThesisByTid(tid);
+	}
+
+	@Override
 	public int insert(Thesis thesis) {
 		return thesisMapper.insert(thesis);
 	}

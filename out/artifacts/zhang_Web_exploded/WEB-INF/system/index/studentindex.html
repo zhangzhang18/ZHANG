@@ -6,6 +6,7 @@
 <meta name="keywords" content="管理系统" />
 <meta name="description" content="管理系统" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="${base}/resource/images/logo.ico"/>
 <link href="${base}/resource/hsr/acedown/assets/css/bootstrap.min.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
@@ -22,6 +23,17 @@
 	font-size: 13px;
 }
 </style>
+	<script language="javascript">
+        var t = null;
+        t = setTimeout(time,1000);//开始执行
+        function time()
+        {
+            clearTimeout(t);//清除定时器
+            dt = new Date();
+            document.getElementById("timeShow").innerHTML =  "现在的时间为："+dt.toLocaleDateString()+dt.toLocaleTimeString();
+            t = setTimeout(time,1000); //设定定时器，循环执行
+        }
+	</script>
 </head>
 <body>
 	<!--head开始-->
@@ -32,7 +44,7 @@
 			} catch (e) {
 			}
 		</script>
-
+		<div id="timeShow"></div>
 		<div class="navbar-container" id="navbar-container">
 			<div class="navbar-header pull-left">
 				<a href="#" class="navbar-brand"> <small> <!-- 										<i class="icon-leaf"></i> -->
@@ -56,11 +68,7 @@
 
 						<ul
 							class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-							<li><a href="#"> <i class="icon-user"></i> 个人资料
-							</a></li>
-
-							<li><a href="serviceOnlien.html"> <i class="icon-user"></i>
-									信息反馈
+							<li><a href="${base}/student/stulist.do"> <i class="icon-user"></i> 个人资料
 							</a></li>
 
 							<li class="divider"></li>
