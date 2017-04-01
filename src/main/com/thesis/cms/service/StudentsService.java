@@ -51,6 +51,5 @@ public interface StudentsService {
 	public void fromXls2(List<Students> students);
 
 
-
-
+    int updateByPrimaryKey(Students student);
 }

@@ -31,11 +31,14 @@
 			<form method="post" action="${base!}/student/selth.do" id="select">
 
 				<lable>论文题目:</lable>
-				<input type="text" name="ctitle"> <input class="btn btn-info" onclick="checktitle()"
+				<input type="text" name="ctitle"> <input style="width: 80px;" class="btn btn-info" onclick="checktitle()"
 					value="select">
 				<lable>教师姓名:</lable>
-				<input type="text" name="teaname"> <input  class="btn btn-info" onclick="checkname()"
+				<input type="text" name="teaname"> <input style="width: 80px;" class="btn btn-info" onclick="checkname()"
 														 value="select">
+				<lable>教师姓名拼音:</lable>
+				<input type="text" name="pinyin"> <input  style="width: 80px;" class="btn btn-info" onclick="checkpinyin()"
+														   value="select">
 			</form>
 		</div>
 
@@ -156,6 +159,14 @@
             }else {
                 $("#select").submit();
 			}
+        }
+        function checkpinyin() {
+            if ($("input[name=pinyin]").val() == "") {
+                alert("查询不能为空!");
+                return false;
+            }else {
+                $("#select").submit();
+            }
         }
 	</script>
 </body>

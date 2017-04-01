@@ -103,7 +103,9 @@ public class StudentsController {
 
 	@RequestMapping("/update.do")
 	public String update(HttpServletRequest request,
-			HttpServletResponse response, ModelMap model,Students student) {
+			HttpServletResponse response, ModelMap model ) {
+		String id=request.getParameter("stuid");
+		Students student=studentsService.selectById(Integer.parseInt(id));
 		model.addAttribute("student", student);
 		
 		return "user/stuupdate";
@@ -112,7 +114,7 @@ public class StudentsController {
 	public String stuup(Integer id, HttpServletRequest request,
 			HttpServletResponse response, ModelMap model,Students student) {
 
-		studentsService.update(student);
+		studentsService.updateByPrimaryKey(student);
 	
 		return "redirect:v_list.do";
 	}

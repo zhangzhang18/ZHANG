@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>导出</title>
+    <link href="${base}/resource/hsr/acedown/assets/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/ace.min.css"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/ace-rtl.min.css"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/ace-skins.min.css"/>
+    <script src="${base}/resource/hsr/assets/js/jquery-1.8.2.min.js"></script>
 </head>
 <body style='width:99%;'>
-  <button onclick="down()" id="down">导出文件</button>
+<div class="page-header">
+    <h1>
+        文档管理 <i class="icon-double-angle-right"></i>
+        <small> 导出</small>
+    </h1>
+</div>
+<div class="page-content">
+    <button onclick="down()" id="down">导出文件</button>
+</div>
 </body>
 <script src="${base}/resource/hsr/assets/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript">
     function down() {
-      window.location.href='/zhang/count/xml.do';
+        window.location.href = '/zhang/count/xml.do';
     }
 </script>
 </html>

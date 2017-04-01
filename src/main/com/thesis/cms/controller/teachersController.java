@@ -82,7 +82,9 @@ public class teachersController {
 
 	@RequestMapping("/update.do")
 	public String update(HttpServletRequest request,
-			HttpServletResponse response, ModelMap model, Teachers teacher) {
+			HttpServletResponse response, ModelMap model) {
+		String id=request.getParameter("tid");
+		Teachers teacher=teacherService.getTeacherByCTid(Integer.parseInt(id));
 		model.addAttribute("teacher", teacher);
 
 		return "user/teaupdate";

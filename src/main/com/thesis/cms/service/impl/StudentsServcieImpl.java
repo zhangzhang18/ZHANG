@@ -127,4 +127,9 @@ public class StudentsServcieImpl implements StudentsService {
         mapper.fromXls2(students);
     }
 
+    @Override
+    public int updateByPrimaryKey(Students student) {
+        return mapper.updateByPrimaryKey(student);
+    }
+
 }

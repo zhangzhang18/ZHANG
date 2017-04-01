@@ -19,17 +19,14 @@
 
 </head>
   <body style='width:99%;'>
+  <div class="page-header">
+	  <h1>
+		  用户管理 <i class="icon-double-angle-right"></i> <small> 查看</small>
+	  </h1>
+  </div>
 		<div class="page-content">
-	<div class="" align="left">
-		<form method="post" action="${base!}/user/sel.do">
-
-			<lable>Stuid:</lable>
-			<input type="text" name="stuid"> <input type="submit"
-				value="select">
-		</form>
-	</div>
 	<div align="right">
-		<a href="${base}/admin/adduser.do"> <span>添加 </span>
+		<a href="${base}/admin/adduser.do"> <span class="btn btn-info">添加 </span>
 		</a>
 	</div>
 	<br>
@@ -62,8 +59,7 @@
 					<td>
 						<div
 							class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-							<a class="blue"
-								href="${base!}/school/v_edit.do?id=${l.id!}"> 编辑 </a> <a
+							 <a
 								class="blue" href="javascript:void(0);"
 								onclick="del(${l.id!})"> 移除 </a>
 						</div>

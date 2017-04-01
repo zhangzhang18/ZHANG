@@ -83,12 +83,17 @@ public class StuController {
                            HttpServletResponse response) {
         String ctitle = request.getParameter("ctitle");
         String teaname = request.getParameter("teaname");
+        String pinyin = request.getParameter("pinyin");
         ModelAndView mav = new ModelAndView();
         if (!ctitle.equals("")) {
             List<Thesis> thesis = thesisservice.selectByTitle(ctitle);
             mav.addObject("thesis", thesis);
-        }else {
+        }else  if(!teaname.equals("")) {
             Teachers teacher =teacherService.selectTeacherByName(teaname);
+            List<Thesis> thesis = thesisservice.selectThesisByTid(teacher.getTid());
+            mav.addObject("thesis", thesis);
+        }else {
+            Teachers teacher =teacherService.getTeacherByName(pinyin);
             List<Thesis> thesis = thesisservice.selectThesisByTid(teacher.getTid());
             mav.addObject("thesis", thesis);
         }
