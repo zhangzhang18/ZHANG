@@ -1,176 +1,306 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>adminGroup.html</title>
+    <title>adminGroup.html</title>
 
-<meta name="keywords" content="keyword1,keyword2,keyword3">
-<meta name="description" content="this is my page">
-<meta name="content-type" content="text/html; charset=UTF-8">
-<link href="${base}/resource/hsr/acedown/assets/css/bootstrap.min.css"
-	rel="stylesheet" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/font-awesome.min.css" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/ace.min.css" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/ace-rtl.min.css" />
-<link rel="stylesheet"
-	href="${base}/resource/hsr/acedown/assets/css/ace-skins.min.css" />
-<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-<script type="text/javascript"
-	src="${base}/resource/mulUpload/jquery-1.7.2.js"></script>
-<script type="text/javascript"
-	src="${base}/resource/mulUpload/core/zyFile.js"></script>
-<script type="text/javascript"
-	src="${base}/resource/mulUpload/control/js/zyUpload.js"></script>
-<script type="text/javascript" src="${base}/resource/mulUpload/demo.js"></script>
-<script type="text/javascript"
-	src="${base!}/resource/mulUpload/ajaxfileupload.js"></script>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link href="${base}/resource/hsr/acedown/assets/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/ace.min.css"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/ace-rtl.min.css"/>
+    <link rel="stylesheet"
+          href="${base}/resource/hsr/acedown/assets/css/ace-skins.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript"
+            src="${base}/resource/mulUpload/jquery-1.7.2.js"></script>
+    <script type="text/javascript"
+            src="${base}/resource/mulUpload/core/zyFile.js"></script>
+    <script type="text/javascript"
+            src="${base}/resource/mulUpload/control/js/zyUpload.js"></script>
+    <script type="text/javascript" src="${base}/resource/mulUpload/demo.js"></script>
+    <script type="text/javascript"
+            src="${base!}/resource/mulUpload/ajaxfileupload.js"></script>
+    <style type="text/css">
+        .uploader {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            cursor: default;
+            padding: 0;
+            margin: 10px 0px;
+            -moz-box-shadow: 0px 0px 5px #ddd;
+            -webkit-box-shadow: 0px 0px 5px #ddd;
+            box-shadow: 0px 0px 5px #ddd;
+
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .filename {
+            float: left;
+            display: inline-block;
+            outline: 0 none;
+            height: 32px;
+            width: 180px;
+            margin: 0;
+            padding: 8px 10px;
+            overflow: hidden;
+            cursor: default;
+            border: 1px solid;
+            border-right: 0;
+            font: 9pt/100% Arial, Helvetica, sans-serif;
+            color: #777;
+            text-shadow: 1px 1px 0px #fff;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            -moz-border-radius: 5px 0px 0px 5px;
+            -webkit-border-radius: 5px 0px 0px 5px;
+            border-radius: 5px 0px 0px 5px;
+
+            background: #f5f5f5;
+            background: -moz-linear-gradient(top, #fafafa 0%, #eee 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fafafa), color-stop(100%, #f5f5f5));
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa', endColorstr='#f5f5f5', GradientType=0);
+            border-color: #ccc;
+
+            -moz-box-shadow: 0px 0px 1px #fff inset;
+            -webkit-box-shadow: 0px 0px 1px #fff inset;
+            box-shadow: 0px 0px 1px #fff inset;
+
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .button {
+            float: left;
+            height: 32px;
+            display: inline-block;
+            outline: 0 none;
+            padding: 8px 12px;
+            margin: 0;
+            cursor: pointer;
+            border: 1px solid;
+            font: bold 9pt/100% Arial, Helvetica, sans-serif;
+
+            -moz-border-radius: 0px 5px 5px 0px;
+            -webkit-border-radius: 0px 5px 5px 0px;
+            border-radius: 0px 5px 5px 0px;
+
+            -moz-box-shadow: 0px 0px 1px #fff inset;
+            -webkit-box-shadow: 0px 0px 1px #fff inset;
+            box-shadow: 0px 0px 1px #fff inset;
+        }
+
+        .uploader input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            height: 30px;
+            cursor: pointer;
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+        }
+
+        /* Blue Color Scheme ------------------------ */
+
+        .blue .button {
+            color: #fff;
+            text-shadow: 1px 1px 0px #09365f;
+            background: #064884;
+            background: -moz-linear-gradient(top, #3b75b4 0%, #064884 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3b75b4), color-stop(100%, #064884));
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3b75b4', endColorstr='#064884', GradientType=0);
+            border-color: #09365f;
+        }
+
+        .blue:hover .button {
+            background: #3b75b4;
+            background: -moz-linear-gradient(top, #064884 0%, #3b75b4 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #064884), color-stop(100%, #3b75b4));
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#064884', endColorstr='#3b75b4', GradientType=0);
+        }
+
+    </style>
 </head>
+
 <script type="text/javascript">
-	function upload() {
-		$.ajaxFileUpload({
-			url : '${base!}/teacher/teaup.do',
-			secureuri : false,
-			fileElementId : 'uploadFile',
-			dataType : 'json',
-			contentType : 'text/json',
-			success : function(data, status) {
-				alert("上传完成");
-				//window.location="${base}/basicOperation/teacher.do";
+    function upload() {
+        $.ajaxFileUpload({
+            url: '${base!}/teacher/teaup.do',
+            secureuri: false,
+            fileElementId: 'uploadFile',
+            dataType: 'json',
+            contentType: 'text/json',
+            success: function (data, status) {
+                alert("上传完成");
+                //window.location="${base}/basicOperation/teacher.do";
 
-			},
-			error : function(data, status, e) {
-				alert(e);
-			}
-		});
+            },
+            error: function (data, status, e) {
+                alert(e);
+            }
+        });
 
-	}
+    }
 </script>
 <script type="text/javascript">
-	$(function() {
-		$('a').click(function() {
-			var link = this.href + '?' + 'fileName=' + $('#fileName').val();
-			window.open(link);
-			return false;
-		});
-	});
+    $(function () {
+        $('a').click(function () {
+            var link = this.href + '?' + 'fileName=' + $('#fileName').val();
+            window.open(link);
+            return false;
+        });
+    });
+</script>
+<script>$(function () {
+    $("input[type=file]").change(function () {
+        $(this).parents(".uploader").find(".filename").val($(this).val());
+    });
+    $("input[type=file]").each(function () {
+        if ($(this).val() == "") {
+            $(this).parents(".uploader").find(".filename").val("No file selected...");
+        }
+    });
+});
 </script>
 <body style='width:99%;'>
 <div class="page-header">
-	<h1>
-		教师论文管理 <i class="icon-double-angle-right"></i> <small> 添加论文</small>
-	</h1>
+    <h1>
+        教师论文管理 <i class="icon-double-angle-right"></i>
+        <small> 添加论文</small>
+    </h1>
 </div>
-	<div class="page-content">
-		<input id="uploadFile" name="uploadFile" type="file" value="导入数据"
-			class="col-xs-10 col-sm-5" /> <input name="" type="button"
-			value="上传" onclick="upload()" class="btn" /> <input id='fileName'
-			type="text" name="fileName" value="thesis.xls" hidden /> <a
-			href="${base!}/teacher/download.do"><button  class="btn" >下载</button></a>
+<div class="page-content">
+    <div class="uploader blue">
+        <input type="text" class="filename" readonly="readonly"/>
+        <input type="button" name="file" class="button" value="Browse..."/>
+        <input type="file" size="30" id="uploadFile" name="uploadFile"/>
+    </div>
+    <input name="" type="button" value="上传" onclick="upload()" class="btn btn-info"/>
+    <div><input id='fileName'
+                type="text" name="fileName" value="thesis.xls" hidden/> <a
+            href="${base!}/teacher/download.do">
+        <button class="btn btn-info">下载样例</button>
+    </a>
+    </div>
 
-		<!-- /.page-header -->
-		<div class="row">
-			<div class="col-xs-12">
-				<form class="form-horizontal" id="bankType"
-					action="${base!}/teacher/addthesis.do" method="post" role="form">
+    <!-- /.page-header -->
+    <div class="row">
+        <div class="col-xs-12">
+            <form class="form-horizontal" id="bankType"
+                  action="${base!}/teacher/addthesis.do" method="post" role="form">
 
-					<div class="space-4"></div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right"
-							>论文题目*</label>
-						<div class="col-sm-9">
-							<input type="text"  name="ctitle"
-								class="col-xs-10 col-sm-5" /> <span ></span>
-						</div>
-					</div>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"
+                    >论文题目*</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="ctitle"
+                               class="col-xs-10 col-sm-5"/> <span></span>
+                    </div>
+                </div>
 
-					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right"
-							>论文类型*</label>
-						<div class="col-sm-9">
-							<select type="text" name="ctype" class="col-xs-10 col-sm-5">
-								<option value="0">论文</option>
-								<option value="1">设计</option>
-							</select>
-						</div>
-					</div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"
+                    >论文类型*</label>
+                    <div class="col-sm-9">
+                        <select type="text" name="ctype" class="col-xs-10 col-sm-5">
+                            <option value="0">论文</option>
+                            <option value="1">设计</option>
+                        </select>
+                    </div>
+                </div>
 
-					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right"
-							>题目性质*</label>
-						<div class="col-sm-9">
-							<select type="text" name="Cproperty" class="col-xs-10 col-sm-5">
-								<option value="0">企事业需求类</option>
-								<option value="1">科学研究类</option>
-								<option value="2">学科前沿综述类</option>
-								<option value="3">工程设计类</option>
-								<option value="4">社会热点类</option>
-								<option value="5">解决社会实际问题类</option>
-								<option value="6">其他类</option>
-							</select>
-						</div>
-					</div>
-					<div class="space-4"></div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right"
-							>研究内容*</label>
-						<div class="col-sm-9">
-							<textarea class="form-control" name="content" style="width: 42%;"></textarea>
-							<span ></span>
-						</div>
-					</div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"
+                    >题目性质*</label>
+                    <div class="col-sm-9">
+                        <select type="text" name="Cproperty" class="col-xs-10 col-sm-5">
+                            <option value="0">企事业需求类</option>
+                            <option value="1">科学研究类</option>
+                            <option value="2">学科前沿综述类</option>
+                            <option value="3">工程设计类</option>
+                            <option value="4">社会热点类</option>
+                            <option value="5">解决社会实际问题类</option>
+                            <option value="6">其他类</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"
+                    >研究内容*</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" name="content" style="width: 42%;"></textarea>
+                        <span></span>
+                    </div>
+                </div>
 
-					<div class="space-4"></div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right"
-							>备注*</label>
-						<div class="col-sm-9">
-							<textarea class="form-control" style="width: 42%;" name="Message"></textarea>
-							<span ></span>
-						</div>
-					</div>
+                <div class="space-4"></div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right"
+                    >备注*</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" style="width: 42%;" name="Message"></textarea>
+                        <span></span>
+                    </div>
+                </div>
 
 
-					<div class="space-4"></div>
-					<div>
-						<div class="col-md-offset-3 col-md-9">
-							<button class="btn btn-info" id="forSubmit" type="button"
-								onclick="add()">
-								<i class="icon-ok bigger-110"></i> 提交
-							</button>
-							&nbsp; &nbsp; &nbsp;
-							<button class="btn" type="reset">
-								<i class="icon-undo bigger-110"></i> 重置
-							</button>
-						</div>
-					</div>
+                <div class="space-4"></div>
+                <div>
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" id="forSubmit" type="button"
+                                onclick="add()">
+                            <i class="icon-ok bigger-110"></i> 提交
+                        </button>
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="icon-undo bigger-110"></i> 重置
+                        </button>
+                    </div>
+                </div>
 
-				</form>
-				<script type="text/javascript">
-					function add() {
-						if ($("input[name=ctitle]").val() == "") {
-							alert("论文题目不能为空!");
-							return false;
-						}
+            </form>
+            <script type="text/javascript">
+                function add() {
+                    if ($("input[name=ctitle]").val() == "") {
+                        alert("论文题目不能为空!");
+                        return false;
+                    }
 
-						if ($("input[name=Cproperty]").val() == "") {
-							alert("论文性质不能为空!");
-							return false;
-						}
-						if ($("input[name=ctype]").val() == "") {
-							alert("论文类型不能为空!");
-							return false;
-						}
-						$("#bankType").submit();
-					}
-				</script>
+                    if ($("input[name=Cproperty]").val() == "") {
+                        alert("论文性质不能为空!");
+                        return false;
+                    }
+                    if ($("input[name=ctype]").val() == "") {
+                        alert("论文类型不能为空!");
+                        return false;
+                    }
+                    $("#bankType").submit();
+                }
+            </script>
 
-			</div>
-			<!-- /.col -->
-		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.page-content -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.page-content -->
 </body>
 </html>

@@ -49,7 +49,10 @@
 						<tr name="pagination">
 							<td class="center">${student.stuname}</td>
 							<td>${student.stuid!}</td>
-							<td>${student.stusex!}</td>
+							<td>
+								<#if student.stusex=='0'>女</#if>
+								<#if student.stusex=='1'>男</#if>
+							</td>
 							<td>${student.stuclass!}</td>
 							<td>${teacher.teaName!}</td>
 							<td>${thesis.ctitle!}</td>

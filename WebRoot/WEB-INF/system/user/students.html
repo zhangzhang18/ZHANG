@@ -95,7 +95,10 @@
 							<td class="center">${l.stuname!}</td>
 							<td>${l.stuid!}</td>
 							<td>${l.stupwd!}</td>
-							<td>${l.stusex!}</td>
+							<td>
+								<#if l.stusex=='0'>女</#if>
+								<#if l.stusex=='1'>男</#if>
+							</td>
 							<td>${l.stuclass!}</td>
 							<td>${l.tid!}</td>
 							<td>
